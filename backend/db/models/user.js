@@ -3,6 +3,7 @@ const {
   Model, Validator
 } = require('sequelize');
 const bcrypt = require('bcryptjs');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -10,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
+    static associate(models) {
+      // define association here
+    }
     toSafeObject() {
       const { id, username, email } = this; // context will be the User instance
       return { id, username, email };
-    }
-    static associate(models) {
-      // define association here
     }
     static getCurrentUserById(id) {
       return User.scope("currentUser").findByPk(id);
@@ -56,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
           }
         }
       }
-    },
+    }, 
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -64,14 +65,15 @@ module.exports = (sequelize, DataTypes) => {
         len: [3, 256],
         isEmail: true
       }
-    },
-    hashedPassword: {
-      type: DataTypes.STRING.BINARY,
-      allowNull: false,
-      validate: {
-        len: [60, 60]
-      }
     }, 
+    hashedPassword: {
+    type: DataTypes.STRING.BINARY,
+    allowNull: false,
+    validate: {
+      len: [60, 60]
+    }
+  }, 
+  }, {
     sequelize,
     modelName: 'User',
     defaultScope: {

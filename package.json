@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/JColonJr/API-Project/issues"
   },
-  "homepage": "https://github.com/JColonJr/API-Project#readme"
+  "homepage": "https://github.com/JColonJr/API-Project#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1"
+  }
 }

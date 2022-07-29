@@ -22,6 +22,5 @@
   },
   "homepage": "https://github.com/JColonJr/API-Project#readme",
   "dependencies": {
-    "bcrypt": "^5.0.1"
   }
 }

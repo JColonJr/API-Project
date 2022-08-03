@@ -69,7 +69,7 @@ router.post(
     async (req, res, next) => {
         const { credential, password } = req.body;
 
-        const user = await User.login({ credential, password });
+        const user = await User.login({ credential, password, attrubutes: [firstName, lastName, username, email, password] });
 
         if (!user) {
             const err = new Error('Login failed');

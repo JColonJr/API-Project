@@ -12,7 +12,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      User.hasMany(models.Playlist)
+      User.hasMany(models.Album)
+      User.hasMany(models.Comment)
+      User.hasMany(models.Song)
     }
     toSafeObject() {
       const { id, username, email } = this; // context will be the User instance
